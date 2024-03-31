@@ -10,7 +10,7 @@ namespace ErrorManager.PaymentResultPipeline
 {
     public class PaymentSeqNumberValidationStep : IResultValidationStep<NDCResponseResult>
     {
-        public ValidationTransactionResult Validate(NDCResponseResult ndcResponseResult)
+        public ValidationTransactionResult Validate(NDCResponseResult ndcResponseResult, ValidationTransactionResult previousResult)
         {
             TransactionResultBuilder transactionResultBuilder = new TransactionResultBuilder();
 

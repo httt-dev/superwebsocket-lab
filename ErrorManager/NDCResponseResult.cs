@@ -1,7 +1,11 @@
-﻿using ErrorManager.Opos;
+﻿using ErrorManager.Models;
+using ErrorManager.Opos;
+using ErrorManager.PrintData;
+using ErrorManager.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,6 +50,56 @@ namespace ErrorManager
         public string TransactionType { get; set; }
         public string PaymentMedia { get; set; }
 
+
+        public bool HasDCC()
+        {
+            return AdditionalSercurityInfomation.CsvFormatItemCount() == 10;
+        }
+
+        public bool IsPaymentTransaction()
+        {
+            return RequestInfo.PosRequestType == Enums.PosRequestType.EXEC_SALES;
+        }
+
+        public string ExtractPosPrintData()
+        {
+            string printData = string.Empty;
+
+            switch (PaymentMedia)
+            {
+                case OposCatPayment.Credit:
+                case OposCatPayment.NFC:
+                    if (HasDCC())
+                    {
+                        printData = AdditionalSercurityInfomation.GetCsvItemAt(Enums.PrintDataIndex.CreditWithDCC);
+                    }
+                    else
+                    {
+                        printData = AdditionalSercurityInfomation.GetCsvItemAt(Enums.PrintDataIndex.CreditWithoutDCC);
+                    }
+                    break;
+
+                case OposCatPayment.UnionPay:
+                    printData = AdditionalSercurityInfomation.GetCsvItemAt(Enums.PrintDataIndex.UnionPay);
+                    break;
+
+                case OposCatPayment.Suica:
+                    printData = AdditionalSercurityInfomation.GetCsvItemAt(Enums.PrintDataIndex.Suica);
+                    break;
+
+            }
+
+            return printData;
+        }
+
+        public CreditASIPrintData ConvertPosPrintDataToCreditASIPrintData()
+        {
+            PaymentProcessor processor = new PaymentProcessor();
+            string jsonData = ExtractPosPrintData();
+            // Chuyển đổi thành CreditPrintData cho thanh toán Credit
+            CreditASIPrintData creditData = processor.ProcessPaymentJson<CreditASIPrintData>(OposCatPayment.Credit, jsonData);
+            return creditData;
+        }
 
         public bool IsNoneEvent()
         {

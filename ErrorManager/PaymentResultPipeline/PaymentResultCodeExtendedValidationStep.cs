@@ -11,7 +11,7 @@ namespace ErrorManager.PaymentResultPipeline
 {
     public class PaymentResultCodeExtendedValidationStep : IResultValidationStep<NDCResponseResult>
     {
-        public ValidationTransactionResult Validate(NDCResponseResult ndcResponseResult)
+        public ValidationTransactionResult Validate(NDCResponseResult ndcResponseResult, ValidationTransactionResult previousResult)
         {
             TransactionResultBuilder transactionResultBuilder = new TransactionResultBuilder();
             TransactionResultBuilder builder = ValidationTransactionResult.Builder()
@@ -50,6 +50,7 @@ namespace ErrorManager.PaymentResultPipeline
                         break;
                     case OposResultCodeExtended.Code_1040:
                         // 決済中断
+                        // ※ResultCodeExtended = 21 (自動取消) 参照
                         builder.SetIsValidateFinished(true)
                                         .SetResult(TransactionResult.PaymentInterruptError)
                                         .SetErrorCodeInfo(new ErrorCodeInfo { MessageID = "CS02" });

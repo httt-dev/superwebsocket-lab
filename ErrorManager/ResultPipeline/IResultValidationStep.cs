@@ -8,6 +8,6 @@ namespace ErrorManager.ResultPipeline
 {
     public interface IResultValidationStep<T>
     {
-        ValidationTransactionResult Validate(T obj);
+        ValidationTransactionResult Validate(T obj , ValidationTransactionResult previousResult);
     }
 }

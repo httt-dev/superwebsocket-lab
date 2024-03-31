@@ -11,7 +11,7 @@ namespace ErrorManager.PaymentResultPipeline
 {
     public class PaymentResultCodeValidationStep : IResultValidationStep<NDCResponseResult>
     {
-        public ValidationTransactionResult Validate(NDCResponseResult ndcResponseResult)
+        public ValidationTransactionResult Validate(NDCResponseResult ndcResponseResult, ValidationTransactionResult previousResult)
         {
             TransactionResultBuilder transactionResultBuilder = new TransactionResultBuilder();
             TransactionResultBuilder builder = ValidationTransactionResult.Builder()

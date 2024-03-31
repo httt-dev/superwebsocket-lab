@@ -29,4 +29,12 @@ namespace ErrorManager.Enums
         DirectResonse,
         CallBackResponse
     }
+
+    public enum PrintDataIndex
+    {
+        CreditWithDCC = 10,
+        CreditWithoutDCC = 21,
+        UnionPay = 10,
+        Suica = 13,
+    }
 }

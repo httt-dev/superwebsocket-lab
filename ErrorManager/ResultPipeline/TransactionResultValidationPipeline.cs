@@ -18,7 +18,7 @@ namespace ErrorManager.ResultPipeline
 
             foreach (var step in _steps)
             {
-                result = step.Validate(obj);
+                result = step.Validate(obj, result);
                 if (!result.IsValidateFinished)
                     return result;
             }

@@ -39,9 +39,7 @@ namespace ErrorManager
         
     }
 
-    
-    
-    
+  
 
     public class CreateSampleErrorCodeList
     {
