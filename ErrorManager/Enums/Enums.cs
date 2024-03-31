@@ -37,4 +37,5 @@ namespace ErrorManager.Enums
         UnionPay = 10,
         Suica = 13,
     }
+
 }

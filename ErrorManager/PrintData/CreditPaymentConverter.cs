@@ -9,5 +9,9 @@ namespace ErrorManager.PrintData
 {
     public class CreditPaymentConverter : IPaymentDataConverter<CreditASIPrintData>
     {
+        public CreditASIPrintData ConvertFromJson(string jsonData)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

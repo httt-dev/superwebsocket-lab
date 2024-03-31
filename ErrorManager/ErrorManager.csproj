@@ -59,6 +59,11 @@
     <Compile Include="ErrorTypeList.cs" />
     <Compile Include="PaymentResultPipeline\PaymentResultCodeExtendedValidationStep.cs" />
     <Compile Include="PosRequestInfo.cs" />
+    <Compile Include="PrintData\CreditPaymentConverter.cs" />
+    <Compile Include="PrintData\IPaymentDataConverter.cs" />
+    <Compile Include="PrintData\PaymentConverterFactory.cs" />
+    <Compile Include="PrintData\PaymentProcessor.cs" />
+    <Compile Include="PrintData\UnionPayConverter.cs" />
     <Compile Include="ResultPipeline\IResultValidationStep.cs" />
     <Compile Include="PaymentResultPipeline\PaymentResultCodeValidationStep.cs" />
     <Compile Include="PaymentResultPipeline\PaymentSeqNumberValidationStep.cs" />
