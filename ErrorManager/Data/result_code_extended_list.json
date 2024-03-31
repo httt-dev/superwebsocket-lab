@@ -1,0 +1,120 @@
+{
+  "result_code_extended_list": [
+    {
+      "pos_request_type": "EXEC_SALES",
+      "response_type": "CallBackResponse",
+      "result_codes": [
+        {
+          "error_code": "20",
+          "error_type": "",
+          "msg_id": ""
+        },
+        {
+          "error_code": "21",
+          "error_type": "",
+          "msg_id": ""
+        },
+        {
+          "error_code": "91",
+          "error_type": "",
+          "msg_id": ""
+        },
+        {
+          "error_code": "1010",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "1020",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "1030",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "1040",
+          "error_type": "決済中断",
+          "msg_id": "CS02"
+        },
+        {
+          "error_code": "1050",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "1060",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "未定義",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC99"
+        }
+      ]
+    },
+
+    {
+      "pos_request_type": "EXEC_VOID",
+      "response_type": "CallBackResponse",
+      "result_codes": [
+        {
+          "error_code": "20",
+          "error_type": "",
+          "msg_id": ""
+        },
+        {
+          "error_code": "21",
+          "error_type": "",
+          "msg_id": ""
+        },
+        {
+          "error_code": "91",
+          "error_type": "",
+          "msg_id": ""
+        },
+        {
+          "error_code": "1010",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "1020",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "1030",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "1040",
+          "error_type": "決済中断",
+          "msg_id": "CV02"
+        },
+        {
+          "error_code": "1050",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "1060",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "未定義",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC99"
+        }
+      ]
+    }
+
+
+
+  ]
+}

@@ -1,0 +1,276 @@
+{
+  "result_code_list": [
+    {
+      "pos_request_type": "EXEC_SALES",
+      "response_type": "CallBackResponse",
+      "result_codes": [
+        {
+          "error_code": "101",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "103",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "104",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "105",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "106",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "107",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "109",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "111",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "112",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC99"
+        },
+        {
+          "error_code": "113",
+          "error_type": "その他(不成立)",
+          "msg_id": "CS01"
+        },
+        {
+          "error_code": "114",
+          "error_type": "",
+          "msg_id": ""
+        },
+        {
+          "error_code": "未定義",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC99"
+        }
+      ]
+    },
+
+
+    {
+      "pos_request_type": "EXEC_VOID",
+      "response_type": "CallBackResponse",
+      "result_codes": [
+        {
+          "error_code": "101",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "103",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "104",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "105",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "106",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "107",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "109",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "111",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "112",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC99"
+        },
+        {
+          "error_code": "113",
+          "error_type": "その他(不成立)",
+          "msg_id": "CV01"
+        },
+        {
+          "error_code": "114",
+          "error_type": "",
+          "msg_id": ""
+        },
+        {
+          "error_code": "未定義",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC99"
+        }
+      ]
+    },
+
+
+    {
+      "pos_request_type": "MAINTENANCE",
+      "response_type": "CallBackResponse",
+      "result_codes": [
+        {
+          "error_code": "101",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC98"
+        },
+        {
+          "error_code": "103",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC98"
+        },
+        {
+          "error_code": "104",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC98"
+        },
+        {
+          "error_code": "105",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC98"
+        },
+        {
+          "error_code": "106",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC98"
+        },
+        {
+          "error_code": "107",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC98"
+        },
+        {
+          "error_code": "109",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC98"
+        },
+        {
+          "error_code": "111",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC98"
+        },
+        {
+          "error_code": "112",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC98"
+        },
+        {
+          "error_code": "113",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC98"
+        },
+        {
+          "error_code": "114",
+          "error_type": "",
+          "msg_id": ""
+        },
+        {
+          "error_code": "未定義",
+          "error_type": "POS受信エラー",
+          "msg_id": "CC98"
+        }
+      ]
+    },
+
+
+    {
+      "pos_request_type": "TOTAL_DURING",
+      "response_type": "CallBackResponse",
+      "result_codes": [
+        {
+          "error_code": "101",
+          "error_type": "その他(不成立)",
+          "msg_id": ""
+        },
+        {
+          "error_code": "103",
+          "error_type": "その他(不成立)",
+          "msg_id": ""
+        },
+        {
+          "error_code": "104",
+          "error_type": "その他(不成立)",
+          "msg_id": ""
+        },
+        {
+          "error_code": "105",
+          "error_type": "その他(不成立)",
+          "msg_id": ""
+        },
+        {
+          "error_code": "106",
+          "error_type": "その他(不成立)",
+          "msg_id": ""
+        },
+        {
+          "error_code": "107",
+          "error_type": "その他(不成立)",
+          "msg_id": ""
+        },
+        {
+          "error_code": "109",
+          "error_type": "その他(不成立)",
+          "msg_id": ""
+        },
+        {
+          "error_code": "111",
+          "error_type": "その他(不成立)",
+          "msg_id": ""
+        },
+        {
+          "error_code": "112",
+          "error_type": "POS受信エラー",
+          "msg_id": ""
+        },
+        {
+          "error_code": "113",
+          "error_type": "その他(不成立)",
+          "msg_id": ""
+        },
+        {
+          "error_code": "114",
+          "error_type": "",
+          "msg_id": ""
+        },
+        {
+          "error_code": "未定義",
+          "error_type": "POS受信エラー",
+          "msg_id": ""
+        }
+      ]
+    }
+
+  ]
+}
+

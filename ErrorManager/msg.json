@@ -1,0 +1,28 @@
+{
+  "EC0015": {
+    "msg1": "Message 1 ",
+    "msg2": "Message 2",
+    "msg3": "Message 3"
+  },
+  "E4CA0020": {
+    "msg1": "Message 1 ",
+    "msg2": "Message 2",
+    "msg3": "Message 3"
+  },
+  "EC0007": {
+    "msg1": "Message 1 ",
+    "msg2": "Message 2",
+    "msg3": "Message 3"
+  },
+  "EC0113": {
+    "msg1": "Message 1 ",
+    "msg2": "Message 2",
+    "msg3": "Message 3"
+  },
+  "CC99": {
+    "msg1": "Message 1 ",
+    "msg2": "Message 2",
+    "msg3": "Message 3"
+  }
+
+}

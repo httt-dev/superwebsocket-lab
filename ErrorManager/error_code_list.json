@@ -1,0 +1,47 @@
+{
+  "error_code_list": [
+    {
+      "result_code": "20",
+      "error_code": "        ",
+      "center_error_code": "G07",
+      "error_type": "E8",
+      "msg_id": "EC0015"
+    },
+    {
+      "result_code": "20",
+      "error_code": "E4CA0020",
+      "center_error_code": "   ",
+      "error_type": "E9",
+      "msg_id": "EC0053"
+    },
+    {
+      "result_code": "10",
+      "error_code": "00000000",
+      "center_error_code": "   ",
+      "error_type": "0",
+      "msg_id": ""
+    },
+    {
+      "result_code": "20",
+      "error_code": "        ",
+      "center_error_code": "C20",
+      "error_type": "E8",
+      "msg_id": "EC0007"
+    },
+    {
+      "result_code": "21",
+      "error_code": "E2CP6130",
+      "center_error_code": "   ",
+      "error_type": "E4",
+      "msg_id": "EC0113"
+    },
+    {
+      "result_code": "",
+      "error_code": "********",
+      "center_error_code": "***",
+      "error_type": " E7",
+      "msg_id": "CC99"
+    }
+
+  ]
+}  
