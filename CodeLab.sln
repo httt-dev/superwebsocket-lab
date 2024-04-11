@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorManager", "ErrorManage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorManager.MSTest", "ErrorManager.MSTest\ErrorManager.MSTest.csproj", "{FCFFA983-53D8-4EA1-B530-B5E8E35AD29D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MappingPropertyies", "MappingPropertyies\MappingPropertyies.csproj", "{C6CA19FE-2430-4459-8330-3D295573A735}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{FCFFA983-53D8-4EA1-B530-B5E8E35AD29D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCFFA983-53D8-4EA1-B530-B5E8E35AD29D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCFFA983-53D8-4EA1-B530-B5E8E35AD29D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6CA19FE-2430-4459-8330-3D295573A735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6CA19FE-2430-4459-8330-3D295573A735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6CA19FE-2430-4459-8330-3D295573A735}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6CA19FE-2430-4459-8330-3D295573A735}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
