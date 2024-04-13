@@ -1,0 +1,37 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#logTimeline {
+    padding: 20px;
+    border: 1px solid #ccc;
+    max-width: 90vw;
+    margin: 20px auto;
+}
+
+.logEntry {
+    margin-bottom: 10px;
+}
+
+.timestamp {
+    font-weight: bold;
+    color: #333;
+}
+
+.logMessage {
+    margin-left: 20px;
+    color: #666;
+}
+
+.json {
+    color: rgb(0, 139, 19);
+    /* font-weight: bold; */
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
