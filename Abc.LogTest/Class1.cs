@@ -10,6 +10,7 @@ namespace Abc.LogTest
     {
         public void Foo(string callForm) {
             Logger.Logger.LogInfo("Foo >> " + callForm, typeof(SomeTestClass));
+            Logger.Logger.Info("Foo 2 >> " + callForm);
         }
     }
 
@@ -18,6 +19,7 @@ namespace Abc.LogTest
         public static void Bar(string callForm)
         {
             Logger.Logger.LogInfo("Bar >> " + callForm);
+            Logger.Logger.Info("Bar 2 >> " + callForm);
         }
     }
 

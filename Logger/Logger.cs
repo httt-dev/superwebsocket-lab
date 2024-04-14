@@ -1,5 +1,6 @@
 ﻿using log4net;
 using log4net.Config;
+using log4net.Core;
 using log4net.Layout.Pattern;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,10 @@ namespace Logger
     public static class Logger
     {
         //private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private readonly static Type ThisDeclaringType = typeof(Logger);
+        private static readonly ILogger defaultLogger;
+
         static Logger()
         {
             //// Cấu hình Log4Net từ tệp cấu hình "log4net.config"
@@ -23,6 +28,7 @@ namespace Logger
             //Directory.CreateDirectory(logDirectory);
 
             new DateChangeTask().Start();
+            defaultLogger = LoggerManager.GetLogger(Assembly.GetCallingAssembly(), "");
         }
 
         private static Type GetCallingType()
@@ -49,7 +55,17 @@ namespace Logger
 
         public static void LogDebug(string message)
         {
+
             LogDebug(message, GetCallingType());
+
+            
+        }
+
+        public static void Info(string message)
+        {
+            // https://stackoverflow.com/questions/157232/how-to-log-methodname-when-wrapping-log4net
+            // https://stackoverflow.com/questions/2049992/when-using-wrapper-how-to-preserve-class-and-method-name-for-log4net-to-log
+            defaultLogger.Log(typeof(Logger), Level.Info, message, null);
         }
 
         //public static void LogInfo(string message)

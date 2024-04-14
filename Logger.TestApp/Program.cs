@@ -29,6 +29,8 @@ namespace Logger.TestApp
 
                     StaticTestClass.Bar("stera_credit" + i.ToString());
 
+                    Logger.Info("sTEP " + i.ToString());
+
                     Thread.Sleep(1000);
                 }
 
