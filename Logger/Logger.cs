@@ -1,5 +1,6 @@
 ﻿using log4net;
 using log4net.Config;
+using log4net.Layout.Pattern;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,6 +25,13 @@ namespace Logger
             new DateChangeTask().Start();
         }
 
+        private static Type GetCallingType()
+        {
+            var stackTrace = new StackTrace();
+            // Frame index 0 là Logger.LogInfo hoặc Logger.LogError, index 1 là phương thức gọi LogInfo hoặc LogError, index 2 là lớp gọi
+            var callingFrame = stackTrace.GetFrame(2);
+            return callingFrame?.GetMethod()?.DeclaringType;
+        }
         public static void SetContext(string appName)
         {
             string logDirectory = @"C:\hontorsp_pos\log";
@@ -39,19 +47,106 @@ namespace Logger
             //Directory.CreateDirectory(logDirectory);
         }
 
+        public static void LogDebug(string message)
+        {
+            LogDebug(message, GetCallingType());
+        }
+
+        //public static void LogInfo(string message)
+        //{
+        //    //LogInfo(message, GetCallingType());
+        //    var stackTrace = new StackTrace();
+        //    var frame = stackTrace.GetFrame(1);
+        //    var method = frame.GetMethod();
+        //    var callingType = method.DeclaringType;
+        //    var methodName = method.Name;
+
+        //    var logger = LogManager.GetLogger(callingType);
+        //    //logger.Info($"[{callingType.Name}.{methodName}] {message}");
+
+        //    logger.Info(message);
+        //}
+        private static string GetClassName(string sourceFilePath)
+        {
+            string className = Path.GetFileNameWithoutExtension(sourceFilePath);
+            return className;
+        }
+
+        public static void LogInfo(string message,
+            [System.Runtime.CompilerServices.CallerFilePath] string sourceFilePath = "",
+            [System.Runtime.CompilerServices.CallerMemberName] string memberName = "")
+        {
+            string callingClassName = GetClassName(sourceFilePath);
+            log4net.LogManager.GetLogger(callingClassName).Info(message);
+        }
+
+        public static void LogWarn(string message)
+        {
+            LogWarn(message, GetCallingType());
+        }
+
+        public static void LogError(string message)
+        {
+            LogError(message, GetCallingType());
+        }
+        public static void LogFatal(string message)
+        {
+            LogFatal(message, GetCallingType());
+        }
+
+        //-------------------
+        private static void LogDebug(string message, Type callingType)
+        {
+            log4net.LogManager.GetLogger(callingType).Debug(message);
+        }
+
         public static void LogInfo(string message, Type callingType)
         {
-            StackTrace stackTrace = new StackTrace();
-            StackFrame frame = stackTrace.GetFrame(1); // Lấy frame của lớp gọi (không phải của Logger)
-
-            ThreadContext.Properties["file"] = frame.GetFileName();
-            ThreadContext.Properties["line"] = frame.GetFileLineNumber();
             log4net.LogManager.GetLogger(callingType).Info(message);
         }
-        public static void LogError(string message, Type callingType)
+        private static void LogWarn(string message, Type callingType)
+        {
+            log4net.LogManager.GetLogger(callingType).Warn(message);
+        }
+        private static void LogError(string message, Type callingType)
         {
             log4net.LogManager.GetLogger(callingType).Error(message);
         }
+        private static void LogFatal(string message, Type callingType)
+        {
+            log4net.LogManager.GetLogger(callingType).Fatal(message);
+        }
+
     }
 
+    public class CallerMethodNamePatternConverter : PatternLayoutConverter
+    {
+        protected override void Convert(System.IO.TextWriter writer, log4net.Core.LoggingEvent loggingEvent)
+        {
+            var locationInfo = loggingEvent.LocationInformation;
+            var className = locationInfo?.ClassName;
+
+            if (!string.IsNullOrEmpty(className))
+            {
+                var methodName = LogHelper.GetCurrentMethodName();
+                writer.Write(methodName);
+                return;
+            }
+
+            // Nếu không thể xác định được tên phương thức gọi, ghi là "UnknownMethod"
+            writer.Write("UnknownMethod");
+        }
+
+
+
+
+    }
+
+    public static class LogHelper
+    {
+        public static string GetCurrentMethodName()
+        {
+            return System.Reflection.MethodBase.GetCurrentMethod().Name;
+        }
+    }
 }

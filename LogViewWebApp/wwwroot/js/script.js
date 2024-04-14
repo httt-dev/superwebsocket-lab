@@ -11,19 +11,21 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function handleFileSelect(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
+    //const file = event.target.files[0];
+    //const reader = new FileReader();
 
-    reader.onload = function(e) {
-        const logContent = e.target.result;
-        displayLog(logContent);
+    //reader.onload = function(e) {
+    //    const logContent = e.target.result;
+    //    displayLog(logContent);
 
-        // const parsedLogs = parseLog(logContent);
-        // document.getElementById('logTimeline').innerHTML = parsedLogs;
+    //    // const parsedLogs = parseLog(logContent);
+    //    // document.getElementById('logTimeline').innerHTML = parsedLogs;
 
-    };
+    //};
 
-    reader.readAsText(file);
+    //reader.readAsText(file);
+
+    applyFilter(); // Áp dụng bộ lọc khi người dùng chọn tệp
 }
 function displayLog(logContent) {
     const logEntries = logContent.split(/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3})/);
@@ -103,49 +105,90 @@ function pad(value) {
     return value < 10 ? '0' + value : value;
 }
 
-function parseLog(logContent) {
-    const logLines = logContent.split('\n');
-    let parsedLogs = '';
+function applyFilter() {
+    const startDate = new Date(document.getElementById('startDate').value);
+    const endDate = new Date(document.getElementById('endDate').value);
 
-    let prevLogTime = null;
+    const logTimeline = document.getElementById('logTimeline');
+    logTimeline.innerHTML = ''; // Xóa log hiện tại trên giao diện trước khi áp dụng bộ lọc
 
-    function findAndParseJSON(line) {
-        const startIndex = line.indexOf('{');
-        if (startIndex !== -1) {
-            const jsonChunk = line.slice(startIndex);
-            try {
-                const json = JSON.parse(jsonChunk);
-                parsedLogs += line.slice(0, startIndex) + '<pre class="json">' + JSON.stringify(json, null, 2) + '</pre><br>';
-            } catch (error) {
-                parsedLogs += line + '<br>';
-            }
-        } else {
-            parsedLogs += line + '<br>';
-        }
-    }
-
-    function calculateTimeDifference(currentTime) {
-        if (prevLogTime) {
-            const timeDifference = (currentTime - prevLogTime) / 1000; // chuyển đổi sang giây
-            if (timeDifference > 10) {
-                parsedLogs += `<span class="error">Time Gap: ${timeDifference.toFixed(2)} seconds</span><br>`;
-            } else {
-                parsedLogs += `Time Gap: ${timeDifference.toFixed(2)} seconds<br>`;
-            }
-        }
-        prevLogTime = currentTime;
-    }
-
-    logLines.forEach(line => {
-        const logComponents = line.split(' | ');
-        if (logComponents.length > 1) {
-            const logTime = Date.parse(logComponents[0]);
-            if (!isNaN(logTime)) {
-                calculateTimeDifference(logTime);
-            }
-        }
-        findAndParseJSON(line);
-    });
-
-    return parsedLogs;
+    // Hiển thị log phù hợp với khoảng thời gian lọc
+    displayFilteredLog(startDate, endDate);
 }
+function displayFilteredLog(startDate, endDate) {
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+        const logContent = e.target.result;
+        const logEntries = logContent.split(/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3})/);
+
+        let previousTimestamp = null;
+
+        for (let i = 1; i < logEntries.length; i += 2) {
+            const timestampStr = logEntries[i];
+            const message = logEntries[i + 1];
+
+            const timestamp = parseTimestamp(timestampStr);
+
+            const startDateLogFormat = parseTimestamp(convertToLogDateTime(startDate));
+            const endDateLogFormat = parseTimestamp(convertToLogDateTime(endDate));
+
+            console.log('startDateLogFormat : ' + startDateLogFormat);
+            console.log('endDateLogFormat : ' + endDateLogFormat);
+
+            if (timestamp >= startDateLogFormat && timestamp <= endDateLogFormat) {
+                if (previousTimestamp) {
+                    const timeDiff = timestamp - previousTimestamp;
+                    const timeDiffStr = millisecondsToTime(timeDiff);
+                    const timeDiffElem = document.createElement('div');
+
+                    if (timeDiff >= 10000) {
+                        timeDiffElem.style.color = 'red';
+                    }
+
+                    timeDiffElem.textContent = `Time since last log: ${timeDiffStr}`;
+                    logTimeline.appendChild(timeDiffElem);
+                }
+
+                const logEntry = document.createElement('div');
+                //logEntry.classList.add('logEntry');
+
+                const timestampElem = document.createElement('span');
+                timestampElem.classList.add('timestamp');
+                timestampElem.innerHTML = `<strong>${timestampStr}</strong>`;
+
+                const logMessageElem = document.createElement('span');
+                logMessageElem.classList.add('logMessage');
+                logMessageElem.innerHTML = highlightJson(message);
+
+                logEntry.appendChild(timestampElem);
+                logEntry.appendChild(logMessageElem);
+
+                logTimeline.appendChild(logEntry);
+
+                previousTimestamp = timestamp;
+            }
+        }
+    };
+
+    reader.readAsText(file);
+}
+
+function convertToLogDateTime(dateTimeStr) {
+    const date = new Date(dateTimeStr);
+    const year = date.getFullYear();
+    const month = padWithZero(date.getMonth() + 1);
+    const day = padWithZero(date.getDate());
+    const hours = padWithZero(date.getHours());
+    const minutes = padWithZero(date.getMinutes());
+    const seconds = padWithZero(date.getSeconds());
+    const milliseconds = padWithZero(date.getMilliseconds(), 3);
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds},${milliseconds}`;
+}
+
+function padWithZero(value, length = 2) {
+    return String(value).padStart(length, '0');
+}
+

@@ -17,7 +17,7 @@ namespace Abc.LogTest
     {
         public static void Bar(string callForm)
         {
-            Logger.Logger.LogInfo("Bar >> " + callForm, typeof(StaticTestClass));
+            Logger.Logger.LogInfo("Bar >> " + callForm);
         }
     }
 

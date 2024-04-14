@@ -14,7 +14,7 @@ namespace Logger.TestApp2
         {
             Logger.SetContext("stera_emoney");
 
-            Logger.LogInfo("Start app", typeof(Program));
+            Logger.LogInfo("Start app");
 
             //log.Info("Hello logging world!");
 
