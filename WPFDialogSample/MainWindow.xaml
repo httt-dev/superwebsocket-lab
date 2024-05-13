@@ -1,0 +1,16 @@
+﻿<Window x:Class="WPFDialogSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFDialogSample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Modal Dialog" HorizontalAlignment="Left" Margin="60,284,0,0" VerticalAlignment="Top" Height="58" Width="119" Click="Button_Click"/>
+        <Button Content="Modaless Dialog" HorizontalAlignment="Left" Margin="229,284,0,0" VerticalAlignment="Top" Height="58" Width="119" Click="Button_Click_1"/>
+        <Button Content="Close" HorizontalAlignment="Left" Height="58" Margin="400,284,0,0" VerticalAlignment="Top" Width="179" Click="Button_Click_2"/>
+        <Button Content="Check modal" HorizontalAlignment="Left" Height="64" Margin="60,191,0,0" VerticalAlignment="Top" Width="119" Click="Button_Click_3"/>
+
+    </Grid>
+</Window>
